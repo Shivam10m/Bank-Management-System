@@ -35,11 +35,11 @@ public class BankApplication2 {
             do {
                 System.out.print("Enter Opening Balance: ");
                 balance = scan.nextDouble();
-                if (balance < 0) {
+                if (balance <= 0) {
                     System.out.println("Invalid balance.");
                     System.out.println("\nPlease Enter balance above 0.");
                 }
-            } while (balance < 0);
+            } while (balance <= 0);
 
             Bank bank = new Bank(bankName, userId, userName, accountNumber, accountType, balance);
 
@@ -53,6 +53,10 @@ public class BankApplication2 {
                     System.out.print("\nEnter your choice: ");
                     userChoice = scan.nextInt();
 
+                    if (userChoice > 6 || userChoice < 1) {
+                        System.out.println("Invalid choice.");
+                        System.out.println("Please enter a value between 1 and 6.\n");
+                    }
                 } while (userChoice > 6 || userChoice < 1);
                 switch (userChoice) {
                     case 1:
@@ -97,6 +101,10 @@ public class BankApplication2 {
                 System.out.print("Enter your choice: ");
                 choice = scan.nextInt();
                 scan.nextLine();
+                if (true) {
+                    System.out.println("Invalid choice.");
+                    System.out.println("Please enter a valid choice.\n");
+                }
             } while (choice > 2 || choice < 1);
             System.out.println();
         } while (choice != 2);
