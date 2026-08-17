@@ -33,7 +33,7 @@ public class Bank {
     }
 
     String createAccountSummary() {
-        String accountSummary = "Bank name: " + bankName + "\nUser name: " + userName + "\nAccount number: " + accountNumber + "\nAccount type: " + accountType + "\nBalance: " + balance;
+        String accountSummary = "Bank Name: " + bankName + "\nUser Name: " + userName + "\nAccount Number: " + accountNumber + "\nAccount Type: " + accountType + "\nBalance: " + balance;
         return accountSummary;
     }
 

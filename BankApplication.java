@@ -15,38 +15,43 @@ public class BankApplication {
 
         System.out.print("Enter User ID: ");
         int userId = scan.nextInt();
-
         scan.nextLine();
+
         System.out.print("Enter User Name: ");
         String userName = scan.nextLine();
+        System.out.println();
 
         System.out.print("Enter Account Number: ");
         long accountNumber = scan.nextLong();
-
         scan.nextLine();
+
         System.out.print("Enter Account Type: ");
         String accountType = scan.nextLine();
 
-        System.out.print("Enter opening Balance: ");
+        System.out.print("Enter Opening Balance: ");
         double balance = scan.nextDouble();
 
         Bank bank = new Bank(bankName, userId, userName, accountNumber, accountType, balance);
 
-        System.out.println("\n--------Bank & Account Details--------");
+        System.out.println("\n-------- Bank & Account Details --------");
         bank.displayBankDetails();
         bank.displayUserDetails();
         bank.displayAccountDetails();
+        System.out.println();
 
-        System.out.println("----------Account Summary-----------");
+        System.out.println("---------- Account Summary -----------");
         System.out.println(bank.createAccountSummary());
+        System.out.println();
 
-        System.out.print("\nEnter Minimum Balance to check: ");
+        System.out.println("\n------ Minimum Balance Status ------");
+        System.out.print("Enter Minimum Balance to check: ");
         double minBalance = scan.nextDouble();
         if (bank.hasMinimumBalance(minBalance)) {
             System.out.println("Minimum balance is maintained.");
         } else {
             System.out.println("Minimum balance is not maintained.");
         }
+        System.out.println();
 
         scan.close();
     }
