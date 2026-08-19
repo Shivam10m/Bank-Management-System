@@ -5,7 +5,7 @@ public class BankApplication2 {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-
+        // Bank[] bank = new Bank[2];
         int choice;
         do {
             System.out.println("-------------------------------------------");
@@ -48,38 +48,57 @@ public class BankApplication2 {
                 do {
                     System.out.println("\n-------------- MENU ---------------");
                     System.out.println("What You want to do?");
-                    System.out.println("\n1.View Bank Details\n2.View User Details\n3.View Account Details\n4.View Account Summary\n5.Check Minimum Balance\n6.Exit");
+                    System.out.println("\n0.Exit\n1.Display Complete Details\n2.Deposit Amount\n3.Withdraw Amount\n4.Check Balance\n5.View Account Summary\n6.Check Minimum Balance");
 
                     System.out.print("\nEnter your choice: ");
                     userChoice = scan.nextInt();
 
-                    if (userChoice > 6 || userChoice < 1) {
+                    if (userChoice > 6 || userChoice < 0) {
                         System.out.println("Invalid choice.");
-                        System.out.println("Please enter a value between 1 and 6.\n");
+                        System.out.println("Please enter a value between 0 and 6.\n");
                     }
-                } while (userChoice > 6 || userChoice < 1);
+                } while (userChoice > 6 || userChoice < 0);
                 switch (userChoice) {
                     case 1:
-                        System.out.println("\n----------- Bank Details ----------");
+                        System.out.println("\n----------- Complete Details ----------");
                         bank.displayBankDetails();
-                        break;
-
-                    case 2:
-                        System.out.println("\n---------- User Details -----------");
                         bank.displayUserDetails();
-                        break;
-
-                    case 3:
-                        System.out.println("\n--------- Account Details ---------");
                         bank.displayAccountDetails();
                         break;
 
+                    case 2:
+                        System.out.println("\n---------- Deposit Amount -----------");
+                        System.out.print("Enter amount you want to deposit: ");
+                        double depositAmount = scan.nextDouble();
+                        if (bank.deposit(depositAmount)) {
+                            System.out.println("Deposited Successfully");
+                        } else {
+                            System.out.println("Deposit Failed");
+                        }
+                        break;
+
+                    case 3:
+                        System.out.println("\n--------- Withdraw Amount ---------");
+                        System.out.print("Enter amount you want to withdraw: ");
+                        double withdrawAmount = scan.nextDouble();
+                        if (bank.withdraw(withdrawAmount)) {
+                            System.out.println("Withdrawl Successfully");
+                        } else {
+                            System.out.println("Withdrawl Failed");
+                        }
+                        break;
+
                     case 4:
+                        System.out.println("\n--------- Current Balance ---------");
+                        System.out.println("Balance: " + bank.checkBalance());
+                        break;
+
+                    case 5:
                         System.out.println("\n--------- Account Summary ---------");
                         System.out.println(bank.createAccountSummary());
                         break;
 
-                    case 5:
+                    case 6:
                         System.out.print("\nEnter Minimum Balance to check: ");
                         double minBalance = scan.nextDouble();
 
@@ -92,7 +111,7 @@ public class BankApplication2 {
                         break;
 
                 }
-            } while (userChoice != 6);
+            } while (userChoice != 0);
 
             System.out.println();
             do {
