@@ -53,7 +53,7 @@ public class BankApplication2 {
             int userChoice;
             do {
                 do {
-                    System.out.println("-------------- MENU ---------------");
+                    System.out.println("\n-------------- MENU ---------------");
                     System.out.println("What You want to do?");
                     System.out.println("\n0.Exit\n1.Display All Account Details\n2.Deposit Amount\n3.Withdraw Amount\n4.Check Balance\n5.View Account Summary\n6.Check Minimum Balance");
 
@@ -88,21 +88,20 @@ public class BankApplication2 {
                                 break;
                             }
                         }
-                        if (selectedAccount == null) {
-                            System.out.println("Account Not Found.");
-                            return;
-                        }
-
-                        System.out.println("\n---------- Deposit Amount -----------");
-
-                        System.out.print("Enter amount you want to deposit: ");
-                        double depositAmount = scan.nextDouble();
-                        if (selectedAccount.deposit(depositAmount)) {
-                            System.out.println("Deposited Successfully");
+                        if (selectedAccount != null) {
+                            System.out.println("\n---------- Deposit Amount -----------");
+                            System.out.print("Enter amount you want to deposit: ");
+                            double depositAmount = scan.nextDouble();
+                            if (selectedAccount.deposit(depositAmount)) {
+                                System.out.println("Deposited Successfully");
+                            } else {
+                                System.out.println("Deposit Failed");
+                            }
+                            break;
                         } else {
-                            System.out.println("Deposit Failed");
+                            System.out.println("Account Not Found.");
+                            break;
                         }
-                        break;
 
                     case 3:
                         selectedAccount = null;
@@ -115,20 +114,21 @@ public class BankApplication2 {
                                 break;
                             }
                         }
-                        if (selectedAccount == null) {
-                            System.out.println("Account Not Found.");
-                            return;
-                        }
+                        if (selectedAccount != null) {
+                            System.out.println("\n--------- Withdraw Amount ---------");
+                            System.out.print("Enter amount you want to withdraw: ");
+                            double withdrawAmount = scan.nextDouble();
+                            if (selectedAccount.withdraw(withdrawAmount)) {
+                                System.out.println("Withdrawl Successfully");
+                            } else {
+                                System.out.println("Withdrawl Failed");
+                            }
+                            break;
 
-                        System.out.println("\n--------- Withdraw Amount ---------");
-                        System.out.print("Enter amount you want to withdraw: ");
-                        double withdrawAmount = scan.nextDouble();
-                        if (selectedAccount.withdraw(withdrawAmount)) {
-                            System.out.println("Withdrawl Successfully");
                         } else {
-                            System.out.println("Withdrawl Failed");
+                            System.out.println("Account Not Found.");
+                            break;
                         }
-                        break;
 
                     case 4:
                         selectedAccount = null;
@@ -141,14 +141,14 @@ public class BankApplication2 {
                                 break;
                             }
                         }
-                        if (selectedAccount == null) {
+                        if (selectedAccount != null) {
+                            System.out.println("\n--------- Current Balance ---------");
+                            System.out.println("Balance: " + selectedAccount.checkBalance());
+                            break;
+                        } else {
                             System.out.println("Account Not Found.");
-                            return;
+                            break;
                         }
-
-                        System.out.println("\n--------- Current Balance ---------");
-                        System.out.println("Balance: " + selectedAccount.checkBalance());
-                        break;
 
                     case 5:
                         selectedAccount = null;
@@ -161,14 +161,15 @@ public class BankApplication2 {
                                 break;
                             }
                         }
-                        if (selectedAccount == null) {
-                            System.out.println("Account Not Found.");
-                            return;
-                        }
+                        if (selectedAccount != null) {
+                            System.out.println("\n--------- Account Summary ---------");
+                            System.out.println(selectedAccount.createAccountSummary());
+                            break;
 
-                        System.out.println("\n--------- Account Summary ---------");
-                        System.out.println(selectedAccount.createAccountSummary());
-                        break;
+                        } else {
+                            System.out.println("Account Not Found.");
+                            break;
+                        }
 
                     case 6:
                         selectedAccount = null;
@@ -181,21 +182,21 @@ public class BankApplication2 {
                                 break;
                             }
                         }
-                        if (selectedAccount == null) {
-                            System.out.println("Account Not Found.");
-                            return;
-                        }
+                        if (selectedAccount != null) {
+                            System.out.print("\nEnter Minimum Balance to check: ");
+                            double minBalance = scan.nextDouble();
 
-                        System.out.print("\nEnter Minimum Balance to check: ");
-                        double minBalance = scan.nextDouble();
-
-                        System.out.println("\n----- Minimum Balance Status ------");
-                        if (selectedAccount.hasMinimumBalance(minBalance)) {
-                            System.out.println("Minimum balance is maintained.");
+                            System.out.println("\n----- Minimum Balance Status ------");
+                            if (selectedAccount.hasMinimumBalance(minBalance)) {
+                                System.out.println("Minimum balance is maintained.");
+                            } else {
+                                System.out.println("Minimum balance is not maintained.");
+                            }
+                            break;
                         } else {
-                            System.out.println("Minimum balance is not maintained.");
+                            System.out.println("Account Not Found.");
+                            break;
                         }
-                        break;
 
                 }
             } while (userChoice != 0);
@@ -207,7 +208,7 @@ public class BankApplication2 {
                 System.out.print("Enter your choice: ");
                 choice = scan.nextInt();
                 scan.nextLine();
-                if (true) {
+                if (choice > 2 || choice < 1) {
                     System.out.println("Invalid choice.");
                     System.out.println("Please enter a valid choice.\n");
                 }
