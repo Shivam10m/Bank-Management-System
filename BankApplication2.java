@@ -53,7 +53,7 @@ public class BankApplication2 {
             int userChoice;
             do {
                 do {
-                    System.out.println("\n-------------- MENU ---------------");
+                    System.out.println("-------------- MENU ---------------");
                     System.out.println("What You want to do?");
                     System.out.println("\n0.Exit\n1.Display All Account Details\n2.Deposit Amount\n3.Withdraw Amount\n4.Check Balance\n5.View Account Summary\n6.Check Minimum Balance");
 
@@ -82,7 +82,7 @@ public class BankApplication2 {
                         System.out.print("\nEnter Account Number: ");
                         accountNumber = scan.nextLong();
 
-                        for (int i = 0; i <= bankAccounts.length; i++) {
+                        for (int i = 0; i < bankAccounts.length; i++) {
                             if (bankAccounts[i].matchesAccountNumber(accountNumber)) {
                                 selectedAccount = bankAccounts[i];
                                 break;
@@ -109,7 +109,7 @@ public class BankApplication2 {
                         System.out.print("\nEnter Account Number: ");
                         accountNumber = scan.nextLong();
 
-                        for (int i = 0; i <= bankAccounts.length; i++) {
+                        for (int i = 0; i < bankAccounts.length; i++) {
                             if (bankAccounts[i].matchesAccountNumber(accountNumber)) {
                                 selectedAccount = bankAccounts[i];
                                 break;
@@ -135,7 +135,7 @@ public class BankApplication2 {
                         System.out.print("\nEnter Account Number: ");
                         accountNumber = scan.nextLong();
 
-                        for (int i = 0; i <= bankAccounts.length; i++) {
+                        for (int i = 0; i < bankAccounts.length; i++) {
                             if (bankAccounts[i].matchesAccountNumber(accountNumber)) {
                                 selectedAccount = bankAccounts[i];
                                 break;
@@ -155,7 +155,7 @@ public class BankApplication2 {
                         System.out.print("\nEnter Account Number: ");
                         accountNumber = scan.nextLong();
 
-                        for (int i = 0; i <= bankAccounts.length; i++) {
+                        for (int i = 0; i < bankAccounts.length; i++) {
                             if (bankAccounts[i].matchesAccountNumber(accountNumber)) {
                                 selectedAccount = bankAccounts[i];
                                 break;
@@ -175,7 +175,7 @@ public class BankApplication2 {
                         System.out.print("\nEnter Account Number: ");
                         accountNumber = scan.nextLong();
 
-                        for (int i = 0; i <= bankAccounts.length; i++) {
+                        for (int i = 0; i < bankAccounts.length; i++) {
                             if (bankAccounts[i].matchesAccountNumber(accountNumber)) {
                                 selectedAccount = bankAccounts[i];
                                 break;
