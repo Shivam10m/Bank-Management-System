@@ -65,4 +65,16 @@ public class Bank {
         return balance;
     }
 
+    boolean matchesAccountNumber(long accountNumber) {
+        if (this.accountNumber == accountNumber) {
+            return true;
+        }
+        return false;
+    }
+
+    void displayCompleteDetails() {
+        displayBankDetails();
+        displayUserDetails();
+        displayAccountDetails();
+    }
 }
